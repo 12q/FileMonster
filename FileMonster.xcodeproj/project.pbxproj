@@ -96,6 +96,9 @@
 		66E134E0210B42A20037F5C4 /* FileMonster */ = {
 			isa = PBXGroup;
 			children = (
+				66E1350D210B45EC0037F5C4 /* App */,
+				66E1350F210B45FE0037F5C4 /* Service */,
+				66E1350E210B45F50037F5C4 /* Data */,
 				66E134E1210B42A20037F5C4 /* AppDelegate.swift */,
 				66E134E3210B42A20037F5C4 /* ViewController.swift */,
 				66E134E5210B42A20037F5C4 /* Assets.xcassets */,
@@ -122,6 +125,27 @@
 				66E13501210B42A20037F5C4 /* Info.plist */,
 			);
 			path = FileMonsterUITests;
+			sourceTree = "<group>";
+		};
+		66E1350D210B45EC0037F5C4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		66E1350E210B45F50037F5C4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		66E1350F210B45FE0037F5C4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
