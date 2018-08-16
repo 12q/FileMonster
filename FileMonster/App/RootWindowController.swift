@@ -10,10 +10,21 @@ import Cocoa
 
 class RootWindowController: NSWindowController {
 
+    convenience init() {
+        self.init(windowNibName: NSNib.Name(rawValue: "RootWindowController"))
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
-
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        
+        let spitController = NSSplitViewController()
+        let opetations = OperationsController()
+        let items = ItemsController()
+        
+        spitController.addSplitViewItem(NSSplitViewItem(viewController: opetations))
+        spitController.addSplitViewItem(NSSplitViewItem(viewController: items))
+        
+        window?.contentViewController = spitController
     }
     
 }

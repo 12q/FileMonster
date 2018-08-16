@@ -145,11 +145,11 @@
 			children = (
 				66E134E1210B42A20037F5C4 /* AppDelegate.swift */,
 				66D64A682125C15900C0EC60 /* RootWindowController.swift */,
+				66D64A742125C3EF00C0EC60 /* OperationsController.swift */,
+				66D64A752125C3EF00C0EC60 /* OperationsController.xib */,
 				66E134E3210B42A20037F5C4 /* ViewController.swift */,
 				66D64A6C2125C36900C0EC60 /* ItemsController.swift */,
 				66D64A6D2125C36900C0EC60 /* ItemsController.xib */,
-				66D64A742125C3EF00C0EC60 /* OperationsController.swift */,
-				66D64A752125C3EF00C0EC60 /* OperationsController.xib */,
 			);
 			path = App;
 			sourceTree = "<group>";

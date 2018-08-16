@@ -16,15 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="221" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQX-xT-b9X">
-                    <rect key="frame" x="0.0" y="0.0" width="221" height="214"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <clipView key="contentView" ambiguous="YES" id="8G6-0b-8kY">
-                        <rect key="frame" x="1" y="1" width="219" height="212"/>
+                <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="130" horizontalPageScroll="10" verticalLineScroll="130" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQX-xT-b9X">
+                    <rect key="frame" x="0.0" y="0.0" width="221" height="195"/>
+                    <clipView key="contentView" id="8G6-0b-8kY">
+                        <rect key="frame" x="1" y="1" width="219" height="193"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="lX8-XB-bFa">
-                                <rect key="frame" x="0.0" y="0.0" width="219" height="212"/>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="128" rowSizeStyle="automatic" viewBased="YES" id="lX8-XB-bFa">
+                                <rect key="frame" x="0.0" y="0.0" width="219" height="193"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -47,9 +46,8 @@
                                                 <rect key="frame" x="1" y="1" width="216" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0GA-gd-SK1">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="0GA-gd-SK1">
                                                         <rect key="frame" x="0.0" y="0.0" width="216" height="17"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="opp-Ux-eai">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -57,6 +55,11 @@
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="0GA-gd-SK1" firstAttribute="centerX" secondItem="6Wn-4k-RqM" secondAttribute="centerX" id="ONM-YU-E9I"/>
+                                                    <constraint firstItem="0GA-gd-SK1" firstAttribute="centerY" secondItem="6Wn-4k-RqM" secondAttribute="centerY" id="pQL-aX-U6x"/>
+                                                    <constraint firstItem="0GA-gd-SK1" firstAttribute="leading" secondItem="6Wn-4k-RqM" secondAttribute="leading" constant="2" id="suT-cX-RNg"/>
+                                                </constraints>
                                                 <connections>
                                                     <outlet property="textField" destination="0GA-gd-SK1" id="ZBv-d0-bbZ"/>
                                                 </connections>
@@ -76,11 +79,22 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" fixedFrame="YES" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="2Q9-w4-N9K">
-                    <rect key="frame" x="0.0" y="215" width="221" height="57"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="pXp-CB-4Kw">
+                    <rect key="frame" x="0.0" y="212" width="221" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="zrX-4D-J6C"/>
+                    </constraints>
                 </visualEffectView>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="pXp-CB-4Kw" secondAttribute="trailing" id="9wS-hi-xU0"/>
+                <constraint firstAttribute="trailing" secondItem="nQX-xT-b9X" secondAttribute="trailing" id="CHT-vl-N26"/>
+                <constraint firstItem="nQX-xT-b9X" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="HgV-tE-SSN"/>
+                <constraint firstItem="pXp-CB-4Kw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Vmv-UN-ZcJ"/>
+                <constraint firstItem="pXp-CB-4Kw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bhQ-Co-Mda"/>
+                <constraint firstAttribute="bottom" secondItem="nQX-xT-b9X" secondAttribute="bottom" id="pgi-pi-ej6"/>
+                <constraint firstItem="nQX-xT-b9X" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="y0W-g9-WfY"/>
+            </constraints>
             <point key="canvasLocation" x="9.5" y="169"/>
         </customView>
     </objects>
