@@ -13,6 +13,7 @@
 		66D64A6F2125C36900C0EC60 /* ItemsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D64A6D2125C36900C0EC60 /* ItemsController.xib */; };
 		66D64A762125C3EF00C0EC60 /* OperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64A742125C3EF00C0EC60 /* OperationsController.swift */; };
 		66D64A772125C3EF00C0EC60 /* OperationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D64A752125C3EF00C0EC60 /* OperationsController.xib */; };
+		66D64A792125CBCF00C0EC60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D64A782125CBCF00C0EC60 /* Main.storyboard */; };
 		66E134E2210B42A20037F5C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E134E1210B42A20037F5C4 /* AppDelegate.swift */; };
 		66E134E4210B42A20037F5C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E134E3210B42A20037F5C4 /* ViewController.swift */; };
 		66E134E6210B42A20037F5C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E134E5210B42A20037F5C4 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		66D64A6D2125C36900C0EC60 /* ItemsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsController.xib; sourceTree = "<group>"; };
 		66D64A742125C3EF00C0EC60 /* OperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsController.swift; sourceTree = "<group>"; };
 		66D64A752125C3EF00C0EC60 /* OperationsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperationsController.xib; sourceTree = "<group>"; };
+		66D64A782125CBCF00C0EC60 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		66E134DE210B42A20037F5C4 /* FileMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileMonster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E134E1210B42A20037F5C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E134E3210B42A20037F5C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				66E135142119F9F80037F5C4 /* Model */,
 				66E134E5210B42A20037F5C4 /* Assets.xcassets */,
 				66D64A692125C15900C0EC60 /* RootWindowController.xib */,
+				66D64A782125CBCF00C0EC60 /* Main.storyboard */,
 				66E134EA210B42A20037F5C4 /* Info.plist */,
 				66E134EB210B42A20037F5C4 /* FileMonster.entitlements */,
 			);
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66D64A6B2125C15900C0EC60 /* RootWindowController.xib in Resources */,
+				66D64A792125CBCF00C0EC60 /* Main.storyboard in Resources */,
 				66D64A772125C3EF00C0EC60 /* OperationsController.xib in Resources */,
 				66E134E6210B42A20037F5C4 /* Assets.xcassets in Resources */,
 				66D64A6F2125C36900C0EC60 /* ItemsController.xib in Resources */,
