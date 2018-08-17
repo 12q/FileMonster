@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OperationsController" customModule="FileMonster" customModuleProvider="target">
             <connections>
+                <outlet property="selectButton" destination="Lre-lH-XdH" id="Uch-D1-SsG"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -46,16 +47,29 @@
                                                 <rect key="frame" x="1" y="2" width="216" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField identifier="Cell" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-P5-l3U">
+                                                    <textField identifier="Cell" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-P5-l3U">
                                                         <rect key="frame" x="0.0" y="0.0" width="216" height="17"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="uJK-96-FUU">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Pdm-2T-XXr">
+                                                        <rect key="frame" x="196" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="UEt-s4-im7"/>
+                                                            <constraint firstAttribute="height" constant="16" id="pdl-2H-kay"/>
+                                                        </constraints>
+                                                    </progressIndicator>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Pdm-2T-XXr" firstAttribute="centerY" secondItem="uG9-P5-l3U" secondAttribute="centerY" id="0bq-HG-Byv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Pdm-2T-XXr" secondAttribute="trailing" constant="4" id="64r-Cf-agW"/>
+                                                    <constraint firstItem="uG9-P5-l3U" firstAttribute="leading" secondItem="edG-8P-2Za" secondAttribute="leading" constant="2" id="cdc-xz-ZYy"/>
+                                                    <constraint firstItem="uG9-P5-l3U" firstAttribute="centerX" secondItem="edG-8P-2Za" secondAttribute="centerX" id="hUO-vq-B0x"/>
+                                                    <constraint firstItem="uG9-P5-l3U" firstAttribute="centerY" secondItem="edG-8P-2Za" secondAttribute="centerY" id="ird-VU-Cuf"/>
+                                                </constraints>
                                                 <connections>
                                                     <outlet property="textField" destination="uG9-P5-l3U" id="oVS-zT-b8p"/>
                                                 </connections>
@@ -104,6 +118,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystemBold"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="selectFolder:" target="-2" id="ynC-MI-7hD"/>
+                    </connections>
                 </button>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="DoW-q6-Nyu">
                     <rect key="frame" x="0.0" y="42" width="221" height="5"/>

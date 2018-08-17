@@ -10,25 +10,68 @@ import Cocoa
 
 class OperationsController: NSViewController {
 
+    @IBOutlet weak var selectButton: NSButton!
     @IBOutlet weak var tableView: NSTableView!
+    
+    let loader = ContentLoader()
+    var urls: [URL] = []
+
+    @IBAction func selectFolder(_ sender: Any) {
+        let dialog = NSOpenPanel()
+        dialog.title = "Select Path"
+        dialog.message = "Please, select the Folder which shoud be processed by matched operations above."
+        dialog.allowsMultipleSelection = true
+        dialog.canChooseDirectories = true
+        
+        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+            if let rootPath = dialog.url {
+                urls = loader.load(rootPath)
+                print(urls)
+            }
+        } else {
+            return
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
     }
+}
+enum OperationType {
+    case FileterByName, FindDuplicates, SortByMake
     
+    func name() -> String {
+        switch self {
+        case .FileterByName:
+            return "Filter by Alhabetic"
+        case .FindDuplicates:
+            return "Searching for duplicates"
+        case .SortByMake:
+            return "Cathegorise images"
+        default:
+            return "No Option"
+        }
+    }
+}
+
+extension OperationType {
+    static var allValues: [OperationType] {
+        return [.FileterByName, .FindDuplicates, .SortByMake]
+    }
 }
 
 extension OperationsController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 3
+        return OperationType.allValues.count
     }
 }
 
 extension  OperationsController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "OperationCell"), owner: nil) as? NSTableCellView {
-            cell.textField?.stringValue = "OperationCell"
+            cell.textField?.stringValue =  OperationType.allValues[row].name()
             return cell
         }
         return nil

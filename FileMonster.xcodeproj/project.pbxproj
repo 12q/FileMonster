@@ -14,6 +14,7 @@
 		66D64A762125C3EF00C0EC60 /* OperationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64A742125C3EF00C0EC60 /* OperationsController.swift */; };
 		66D64A772125C3EF00C0EC60 /* OperationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D64A752125C3EF00C0EC60 /* OperationsController.xib */; };
 		66D64A792125CBCF00C0EC60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D64A782125CBCF00C0EC60 /* Main.storyboard */; };
+		66D64A7B2126F6F300C0EC60 /* OperationsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64A7A2126F6F300C0EC60 /* OperationsContainer.swift */; };
 		66E134E2210B42A20037F5C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E134E1210B42A20037F5C4 /* AppDelegate.swift */; };
 		66E134E4210B42A20037F5C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E134E3210B42A20037F5C4 /* ViewController.swift */; };
 		66E134E6210B42A20037F5C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E134E5210B42A20037F5C4 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		66D64A742125C3EF00C0EC60 /* OperationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsController.swift; sourceTree = "<group>"; };
 		66D64A752125C3EF00C0EC60 /* OperationsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OperationsController.xib; sourceTree = "<group>"; };
 		66D64A782125CBCF00C0EC60 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		66D64A7A2126F6F300C0EC60 /* OperationsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsContainer.swift; sourceTree = "<group>"; };
 		66E134DE210B42A20037F5C4 /* FileMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileMonster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E134E1210B42A20037F5C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E134E3210B42A20037F5C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				66D64A682125C15900C0EC60 /* RootWindowController.swift */,
 				66D64A742125C3EF00C0EC60 /* OperationsController.swift */,
 				66D64A752125C3EF00C0EC60 /* OperationsController.xib */,
+				66D64A7A2126F6F300C0EC60 /* OperationsContainer.swift */,
 				66E134E3210B42A20037F5C4 /* ViewController.swift */,
 				66D64A6C2125C36900C0EC60 /* ItemsController.swift */,
 				66D64A6D2125C36900C0EC60 /* ItemsController.xib */,
@@ -319,6 +322,7 @@
 				66D64A762125C3EF00C0EC60 /* OperationsController.swift in Sources */,
 				66E134E4210B42A20037F5C4 /* ViewController.swift in Sources */,
 				66E134E2210B42A20037F5C4 /* AppDelegate.swift in Sources */,
+				66D64A7B2126F6F300C0EC60 /* OperationsContainer.swift in Sources */,
 				66D64A6E2125C36900C0EC60 /* ItemsController.swift in Sources */,
 				66E135182122F3120037F5C4 /* ContentLoader.swift in Sources */,
 				66D64A6A2125C15900C0EC60 /* RootWindowController.swift in Sources */,
