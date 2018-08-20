@@ -27,8 +27,7 @@ class ViewController: NSViewController {
         
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             if let rootPath = dialog.url {
-                urls = loader.loadFiles(at: rootPath)
-                print(urls)
+               loader.load(at: rootPath)
             }
         } else {
             return
@@ -36,23 +35,23 @@ class ViewController: NSViewController {
     }
 }
 
-extension ViewController: NSTableViewDataSource {
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return 0
-    }
-}
+//extension ViewController: NSTableViewDataSource {
+//    func numberOfRows(in tableView: NSTableView) -> Int {
+//        return 0
+//    }
+//}
 
-extension ViewController: NSTableViewDelegate {
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-//        let item = filesList[row]
-
-        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Cell"), owner: nil) as? NSTableCellView {
-//            cell.textField?.stringValue = item.exten
-            return cell
-        }
-        return nil
-    }
-}
+//extension ViewController: NSTableViewDelegate {
+//    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+////        let item = filesList[row]
+//
+//        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Cell"), owner: nil) as? NSTableCellView {
+////            cell.textField?.stringValue = item.exten
+//            return cell
+//        }
+//        return nil
+//    }
+//}
 
 //// MARK: - Data Structure
 //

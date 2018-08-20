@@ -24,10 +24,9 @@ class RootWindowController: NSWindowController {
         let spitController = NSSplitViewController()
         
         let operationsVC = OperationsController()
-        operationsVC.set(loader: loader)
         
         let itemsVC = ItemsController()
-        itemsVC.set(loader: loader)
+        itemsVC.set(loadService: loader)
 
         spitController.addSplitViewItem(NSSplitViewItem(viewController: operationsVC))
         spitController.addSplitViewItem(NSSplitViewItem(viewController: itemsVC))

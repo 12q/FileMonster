@@ -8,44 +8,105 @@
 
 import Cocoa
 
-class ItemsController: NSViewController {
-    @IBOutlet weak var contentsTableView: NSTableView!
+class ItemsController: NSViewController, NSTableViewDataSource, FileLoaderDelegate {
+    @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var selectButton: NSButton!
     
-    private var fileLoader: Loader?
+    private var fileLoader: Loader? {
+        didSet {
+            fileLoader?.delegate = self
+        }
+    }
+    var content: [File] = []
 
-    func set(loader: Loader) {
-        self.fileLoader = loader
-        self.fileLoader?.delegate = self
+    // Service Dependency
+    func set(loadService: Loader) {
+        self.fileLoader = loadService
         
+    }
+    
+    // User Dialog
+    @IBAction func selectFolder(_ sender: Any) {
+        let dialog = NSOpenPanel()
+        dialog.title = "Select Path"
+        dialog.message = "Please, select the Folder which shoud be processed by matched operations above."
+        dialog.allowsMultipleSelection = true
+        dialog.canChooseDirectories = true
+        
+        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+            if let selectedPath = dialog.url {
+                guard let loader = fileLoader else { return }
+                self.content = loader.load(at: selectedPath)
+                print(content.count)
+                tableView.reloadData()
+
+            }
+        } else {
+            return
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-}
 
-extension ItemsController: FileLoaderDelegate {
-    func didLoad(data: String) {
-        print(data)
+    // MARK: -
+    func didLoad(data: [File]) {
+        content = data
+        print(content.count)
+        tableView.reloadData()
+        print(content.count)
     }
-}
-
-extension ItemsController: NSTableViewDataSource {
+    
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 10
+        print("tbable: \(content.count)")
+
+        return content.count
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        let file = content[row]
+        
         if tableColumn?.identifier.rawValue == "names" {
-            return "name"
+            return file.name
         }
         
         if tableColumn?.identifier.rawValue == "props" {
-            return "prop"
+            return file.path
         }
         
         return "Check identifier for Cell ;P"
     }
 }
+
+//// MARK: - Data Content Service Delegate
+//
+//extension ItemsController:  {
+//    func didLoad(data: [File]) {
+//        contents.append(contentsOf: data)
+//        contentsTableView.reloadData()
+//    }
+//}
+
+// MARK: -  Table View Delegate
+
+//extension ItemsController: NSTableViewDataSource {
+//    func numberOfRows(in tableView: NSTableView) -> Int {
+//        return contents.count
+//    }
+//
+//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+//        let file = contents[row]
+//
+//        if tableColumn?.identifier.rawValue == "names" {
+//            return file.name
+//        }
+//
+//        if tableColumn?.identifier.rawValue == "props" {
+//            return file.path
+//        }
+//
+//        return "Check identifier for Cell ;P"
+//    }
+//}
 

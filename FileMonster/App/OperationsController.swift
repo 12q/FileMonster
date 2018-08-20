@@ -9,35 +9,8 @@
 import Cocoa
 
 class OperationsController: NSViewController {
-    private var fileLoader: Loader?
-    
-    @IBOutlet weak var selectButton: NSButton!
     @IBOutlet weak var tableView: NSTableView!
-    
-    var urls: [URL] = []
-    
-    func set(loader: Loader) {
-        self.fileLoader = loader
-    }
-    
-    @IBAction func selectFolder(_ sender: Any) {
-        let dialog = NSOpenPanel()
-        dialog.title = "Select Path"
-        dialog.message = "Please, select the Folder which shoud be processed by matched operations above."
-        dialog.allowsMultipleSelection = true
-        dialog.canChooseDirectories = true
         
-        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
-            if let selectedPath = dialog.url {
-                guard let loader = fileLoader else { return }
-                urls = loader.loadFiles(at: selectedPath)
-                print(urls)
-            }
-        } else {
-            return
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
