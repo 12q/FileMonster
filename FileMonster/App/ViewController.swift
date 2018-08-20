@@ -13,7 +13,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var open: NSButton!
     
     var urls: [URL] = []
-    let loader = ContentLoader()
+    let loader = FileLoader()
 
     override func viewDidLoad() {
         super.viewDidLoad()

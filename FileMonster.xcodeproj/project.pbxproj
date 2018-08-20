@@ -21,7 +21,7 @@
 		66E134F5210B42A20037F5C4 /* FileMonsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E134F4210B42A20037F5C4 /* FileMonsterTests.swift */; };
 		66E13500210B42A20037F5C4 /* FileMonsterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E134FF210B42A20037F5C4 /* FileMonsterUITests.swift */; };
 		66E135162119FA780037F5C4 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E135152119FA780037F5C4 /* FileService.swift */; };
-		66E135182122F3120037F5C4 /* ContentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E135172122F3120037F5C4 /* ContentLoader.swift */; };
+		66E135182122F3120037F5C4 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E135172122F3120037F5C4 /* FileLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +63,7 @@
 		66E134FF210B42A20037F5C4 /* FileMonsterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMonsterUITests.swift; sourceTree = "<group>"; };
 		66E13501210B42A20037F5C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66E135152119FA780037F5C4 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
-		66E135172122F3120037F5C4 /* ContentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLoader.swift; sourceTree = "<group>"; };
+		66E135172122F3120037F5C4 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,12 +150,11 @@
 			children = (
 				66E134E1210B42A20037F5C4 /* AppDelegate.swift */,
 				66D64A682125C15900C0EC60 /* RootWindowController.swift */,
-				66D64A742125C3EF00C0EC60 /* OperationsController.swift */,
 				66D64A752125C3EF00C0EC60 /* OperationsController.xib */,
-				66D64A7A2126F6F300C0EC60 /* OperationsContainer.swift */,
-				66E134E3210B42A20037F5C4 /* ViewController.swift */,
+				66D64A742125C3EF00C0EC60 /* OperationsController.swift */,
 				66D64A6C2125C36900C0EC60 /* ItemsController.swift */,
 				66D64A6D2125C36900C0EC60 /* ItemsController.xib */,
+				66E134E3210B42A20037F5C4 /* ViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -170,8 +169,9 @@
 		66E1350F210B45FE0037F5C4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				66E135172122F3120037F5C4 /* ContentLoader.swift */,
+				66E135172122F3120037F5C4 /* FileLoader.swift */,
 				66E135152119FA780037F5C4 /* FileService.swift */,
+				66D64A7A2126F6F300C0EC60 /* OperationsContainer.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 				66E134E2210B42A20037F5C4 /* AppDelegate.swift in Sources */,
 				66D64A7B2126F6F300C0EC60 /* OperationsContainer.swift in Sources */,
 				66D64A6E2125C36900C0EC60 /* ItemsController.swift in Sources */,
-				66E135182122F3120037F5C4 /* ContentLoader.swift in Sources */,
+				66E135182122F3120037F5C4 /* FileLoader.swift in Sources */,
 				66D64A6A2125C15900C0EC60 /* RootWindowController.swift in Sources */,
 				66E135162119FA780037F5C4 /* FileService.swift in Sources */,
 			);

@@ -18,13 +18,16 @@ class RootWindowController: NSWindowController {
         super.windowDidLoad()
         
         let spitController = NSSplitViewController()
-        let opetations = OperationsController()
-        let items = ItemsController()
         
-        spitController.addSplitViewItem(NSSplitViewItem(viewController: opetations))
-        spitController.addSplitViewItem(NSSplitViewItem(viewController: items))
+        let operationsVC = OperationsController()
+        operationsVC.set(loader: FileLoader())
         
-        // Setting Root Controller
+        let itemsVC = ItemsController()
+        
+        spitController.addSplitViewItem(NSSplitViewItem(viewController: operationsVC))
+        spitController.addSplitViewItem(NSSplitViewItem(viewController: itemsVC))
+        
+        // Setting Up the Root Controller
         window?.contentViewController = spitController
     }
     

@@ -1,5 +1,5 @@
 //
-//  ContentLoader.swift
+//  FileLoader.swift
 //  FileMonster
 //
 //  Created by Slava Plis on 8/14/18.
@@ -8,9 +8,13 @@
 
 import Foundation
 
-class ContentLoader {
-    let fileManager = FileManager.default
-    
+protocol Loader {
+    func load(_ path: URL) -> [URL]
+}
+
+class FileLoader: Loader {
+    private let fileManager = FileManager.default
+
     func load(_ path: URL) -> [URL] {
         return contentsOf(folder: path)
     }

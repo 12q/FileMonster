@@ -18,6 +18,8 @@ class ItemsController: NSViewController {
     }
 }
 
+
+
 extension ItemsController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return 10
@@ -32,7 +34,7 @@ extension ItemsController: NSTableViewDataSource {
             return "prop"
         }
         
-        return "Look down the code"
+        return "Check identifier for Cell ;P"
     }
 }
 
