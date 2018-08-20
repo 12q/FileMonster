@@ -49,7 +49,7 @@ enum OperationType {
         case .FindDuplicates:
             return "Searching for duplicates"
         case .SortByMake:
-            return "Cathegorise images"
+            return "Categorize images"
         default:
             return "No Option"
         }

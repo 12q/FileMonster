@@ -10,9 +10,29 @@ import Cocoa
 
 class ItemsController: NSViewController {
 
+    @IBOutlet weak var contentsTableView: NSTableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+
+    }
+}
+
+extension ItemsController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return 10
     }
     
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        if tableColumn?.identifier.rawValue == "names" {
+            return "name"
+        }
+        
+        if tableColumn?.identifier.rawValue == "props" {
+            return "prop"
+        }
+        
+        return "Look down the code"
+    }
 }
+

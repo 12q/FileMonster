@@ -24,6 +24,7 @@ class RootWindowController: NSWindowController {
         spitController.addSplitViewItem(NSSplitViewItem(viewController: opetations))
         spitController.addSplitViewItem(NSSplitViewItem(viewController: items))
         
+        // Setting Root Controller
         window?.contentViewController = spitController
     }
     
