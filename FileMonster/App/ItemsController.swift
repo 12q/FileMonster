@@ -9,8 +9,15 @@
 import Cocoa
 
 class ItemsController: NSViewController {
-
     @IBOutlet weak var contentsTableView: NSTableView!
+    
+    private var fileLoader: Loader?
+
+    func set(loader: Loader) {
+        self.fileLoader = loader
+        self.fileLoader?.delegate = self
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +25,11 @@ class ItemsController: NSViewController {
     }
 }
 
-
+extension ItemsController: FileLoaderDelegate {
+    func didLoad(data: String) {
+        print(data)
+    }
+}
 
 extension ItemsController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {

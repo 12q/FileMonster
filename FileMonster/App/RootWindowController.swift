@@ -17,13 +17,18 @@ class RootWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
+        /// Services
+        let loader = FileLoader()
+
+        // UI Base Controllers
         let spitController = NSSplitViewController()
         
         let operationsVC = OperationsController()
-        operationsVC.set(loader: FileLoader())
+        operationsVC.set(loader: loader)
         
         let itemsVC = ItemsController()
-        
+        itemsVC.set(loader: loader)
+
         spitController.addSplitViewItem(NSSplitViewItem(viewController: operationsVC))
         spitController.addSplitViewItem(NSSplitViewItem(viewController: itemsVC))
         

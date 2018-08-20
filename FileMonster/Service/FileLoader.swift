@@ -9,13 +9,20 @@
 import Foundation
 
 protocol Loader {
-    func load(_ path: URL) -> [URL]
+    weak var delegate: FileLoaderDelegate? { get set }
+    func loadFiles(at path: URL) -> [URL]
+}
+
+protocol FileLoaderDelegate: class {
+    func didLoad(data: String)
 }
 
 class FileLoader: Loader {
     private let fileManager = FileManager.default
+    weak var delegate: FileLoaderDelegate?
 
-    func load(_ path: URL) -> [URL] {
+    func loadFiles(at path: URL) -> [URL] {
+        delegate?.didLoad(data: "AAA")
         return contentsOf(folder: path)
     }
 

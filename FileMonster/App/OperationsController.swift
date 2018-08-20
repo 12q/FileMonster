@@ -20,7 +20,6 @@ class OperationsController: NSViewController {
         self.fileLoader = loader
     }
     
-    
     @IBAction func selectFolder(_ sender: Any) {
         let dialog = NSOpenPanel()
         dialog.title = "Select Path"
@@ -29,11 +28,9 @@ class OperationsController: NSViewController {
         dialog.canChooseDirectories = true
         
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
-            if let rootPath = dialog.url {
-                
+            if let selectedPath = dialog.url {
                 guard let loader = fileLoader else { return }
-                urls = loader.load(rootPath)
-                
+                urls = loader.loadFiles(at: selectedPath)
                 print(urls)
             }
         } else {
