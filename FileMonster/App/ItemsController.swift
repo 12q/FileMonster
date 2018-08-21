@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ItemsController: NSViewController, NSTableViewDataSource {
+class ItemsController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var selectButton: NSButton!
     
@@ -29,26 +29,6 @@ class ItemsController: NSViewController, NSTableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        print("tbable: \(content.count)")
-
-        return content.count
-    }
-    
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        let file = content[row]
-        
-        if tableColumn?.identifier.rawValue == "names" {
-            return file.name
-        }
-        
-        if tableColumn?.identifier.rawValue == "props" {
-            return file.path
-        }
-        
-        return "Check identifier for Cell ;P"
     }
 }
 
@@ -71,34 +51,24 @@ extension ItemsController {
     }
 }
 
-//// MARK: - Data Content Service Delegate
-//
-//extension ItemsController:  {
-//    func didLoad(data: [File]) {
-//        contents.append(contentsOf: data)
-//        contentsTableView.reloadData()
-//    }
-//}
-
 // MARK: -  Table View Delegate
 
-//extension ItemsController: NSTableViewDataSource {
-//    func numberOfRows(in tableView: NSTableView) -> Int {
-//        return contents.count
-//    }
-//
-//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-//        let file = contents[row]
-//
-//        if tableColumn?.identifier.rawValue == "names" {
-//            return file.name
-//        }
-//
-//        if tableColumn?.identifier.rawValue == "props" {
-//            return file.path
-//        }
-//
-//        return "Check identifier for Cell ;P"
-//    }
-//}
+extension ItemsController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return content.count
+    }
+
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        let file = content[row]
+        
+        if tableColumn?.identifier.rawValue == "names" {
+            return file.name
+        }
+        
+        if tableColumn?.identifier.rawValue == "props" {
+            return file.path
+        }
+        return "Check identifier for Cell ;P"
+    }
+}
 
