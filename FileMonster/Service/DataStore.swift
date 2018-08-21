@@ -8,17 +8,19 @@
 
 import Foundation
 
-protocol DataStoreDelegate {
-    func didUpdate()
+protocol DataStoreDelegate: AnyObject {
+    func didUpdate(content: [File])
 }
 
 class DataStore {
+    weak var delegate: DataStoreDelegate?
     static let shared = DataStore()
     private var content: [File] = []
     
     func set(paths: [URL]) {
         let files = paths.map { return File(with: $0) }
         content.append(contentsOf: files)
+        delegate?.didUpdate(content: content)
     }
     
     func fetch() -> [File] {
