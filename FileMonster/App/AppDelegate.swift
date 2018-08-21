@@ -10,14 +10,10 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
     let rootWindowController = RootWindowController()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         rootWindowController.showWindow(nil)
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
     }
 }
 
