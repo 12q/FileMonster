@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+/// Type of Possible Operation
+
+//enum OperationKind {
+//    case <#case#>
+//}
+

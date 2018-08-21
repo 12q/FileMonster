@@ -15,6 +15,9 @@ class FileService {
 
     //open class var `default`: FileService { get }
 }
+//
+//
+//In iOS and Mac OS X v 10.5 and later you should consider using [[NSFileManager alloc] init] rather than the singleton method defaultManager. Instances of NSFileManager are considered thread-safe when created using [[NSFileManager alloc] init].
 
 
 

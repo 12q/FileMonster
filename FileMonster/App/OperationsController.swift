@@ -13,7 +13,6 @@ class OperationsController: NSViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }
 
