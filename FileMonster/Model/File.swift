@@ -13,7 +13,7 @@ enum ManagableType {
     case dir
 }
 
-struct File {
+struct File: Equatable {
     internal var type: ManagableType
     internal var path: URL
     let name: String
@@ -24,5 +24,9 @@ struct File {
         self.ext = path.pathExtension
         self.type = .file
         self.path = path
+    }
+
+    static func ==(lhs: File, rhs: File) -> Bool {
+        return lhs.name == rhs.name && lhs.ext == rhs.ext
     }
 }
