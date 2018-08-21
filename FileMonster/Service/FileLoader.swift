@@ -8,36 +8,28 @@
 
 import Foundation
 
-///
 protocol Loader {
-    var delegate: FileLoaderDelegate? { get set }
-    func load(at path: URL) -> [File]
+    func load(path: URL)
 }
 
-///
-protocol FileLoaderDelegate: AnyObject {
-    func didLoad(data: [File])
-}
+class FileLoader {
+    private let manager = FileManager()
+    private let store = DataStore.shared
 
-class FileLoader: Loader {
-    weak var delegate: FileLoaderDelegate?
-    private let fileManager = FileManager.default
-    
-    
-    func load(at path: URL) -> [File] {
+    func load(path: URL) {
         let paths = contentsOf(folder: path)
-        let files = paths.map { return File(with: $0) }
-//        delegate?.didLoad(data: files)
-        return files
+        store.set(paths: paths)
     }
 
     func contentsOf(folder: URL) -> [URL] {
         do {
-            let contents = try fileManager.contentsOfDirectory(atPath: folder.path)
-            let urls = contents.map { return folder.appendingPathComponent($0) }
-            return urls
+            // WARNING: SHOULD BE NESTED
+            let contents = try manager.contentsOfDirectory(atPath: folder.path)
+            return contents.map { return folder.appendingPathComponent($0) }
         } catch {
             return []
         }
     }
 }
+
+extension FileLoader: Loader {}
