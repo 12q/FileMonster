@@ -9,7 +9,7 @@
 import Cocoa
 
 class RootWindowController: NSWindowController {
-
+    
     convenience init() {
         self.init(windowNibName: NSNib.Name(rawValue: "RootWindowController"))
     }
