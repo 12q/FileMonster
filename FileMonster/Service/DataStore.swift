@@ -1,5 +1,5 @@
 //
-//  DataContainer.swift
+//  DataStore.swift
 //  FileMonster
 //
 //  Created by Slava Plis on 8/21/18.
@@ -8,21 +8,20 @@
 
 import Foundation
 
-protocol DataContainerDelegate {
+protocol DataStoreDelegate {
     func didUpdate()
 }
 
-class DataContainer {
-    static let shared = DataContainer()
+class DataStore {
+    static let shared = DataStore()
+    private var content: [File] = []
     
-    private var objects: [File] = []
-    
-    func insert(paths: [URL]) {
+    func set(paths: [URL]) {
         let files = paths.map { return File(with: $0) }
-        objects.append(contentsOf: files)
+        content.append(contentsOf: files)
     }
     
     func fetch() -> [File] {
-        return objects
+        return content
     }
 }
