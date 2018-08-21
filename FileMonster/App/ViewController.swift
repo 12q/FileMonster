@@ -27,7 +27,7 @@ class ViewController: NSViewController {
         
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             if let rootPath = dialog.url {
-               loader.load(at: rootPath)
+               loader.load(path: rootPath)
             }
         } else {
             return
