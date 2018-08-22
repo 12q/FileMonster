@@ -11,6 +11,8 @@ import Cocoa
 class ItemsController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var selectButton: NSButton!
+    
+    @IBOutlet weak var moarButton: NSButton!
     @IBOutlet weak var duplicationButton: NSButton!
     
     private var fileLoader: Loader?
@@ -26,10 +28,17 @@ class ItemsController: NSViewController {
     // Mark: - User Actions
     
     @IBAction func selectFolder(_ sender: Any) {
-        showDialog()
+        showSelectFolderDialog(option: .none)
     }
     
+    @IBAction func addOneMorePath(_ sender: Any) {
+        showSelectFolderDialog(option: .adding)
+    }
+    
+    
     @IBAction func duplicatinSearch(_ sender: Any) {
+        let operationStack = OperationStack()
+        operationStack.add(op: FileOperation(with: content))
     }
     
     override func viewDidLoad() {
@@ -40,8 +49,12 @@ class ItemsController: NSViewController {
 
 // MARK: - File Open Panel
 
+enum SelectOption {
+    case none, renew, adding
+}
+
 extension ItemsController {
-    func showDialog() {
+    func showSelectFolderDialog(option: SelectOption) {
         let dialog = NSOpenPanel()
         dialog.message = "Please, select the Folder which shoud be processed by matched operations above."
         dialog.allowsMultipleSelection = true
@@ -50,7 +63,7 @@ extension ItemsController {
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             if let selectedPath = dialog.url {
                 guard let loader = fileLoader else { return }
-                loader.load(path: selectedPath)
+                loader.load(path: selectedPath, option: option)
             }
         }
     }
@@ -76,6 +89,8 @@ extension ItemsController: NSTableViewDataSource {
         return "Check identifier for Cell ;P"
     }
 }
+
+// MARK: -  Data Store Delegate
 
 extension ItemsController: DataStoreDelegate {
     func didUpdate(content: [File]) {
