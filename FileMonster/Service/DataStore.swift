@@ -17,7 +17,11 @@ class DataStore {
     static let shared = DataStore()
     private var content: [File] = []
     
-    func set(paths: [URL]) {
+    /// Converts the lits of URLs into objects
+    /// - Parameter drain: The bool that just points whether we keeps pervious elements or not
+    func set(paths: [URL], drain: Bool) {
+        if drain { content.removeAll() }
+        
         let files = paths.map { return File(with: $0) }
         content.append(contentsOf: files)
         delegate?.didUpdate(content: content)
