@@ -23,16 +23,35 @@ class OperationStack {
     /// Adding operation into Queue and Launch
     func add(op: FileOperation) {
         stack.addOperation(op)
-        op.start()
+    }
+    
+    func run() {
+        
     }
 }
 
 class FileOperation: Operation {
-    var progress: Progress?
+//    var progress: Progress?
+    var inputContent: [File]
+    var result: [File] = []
     
-    init(with type: String) {
-        
+    init(with content: [File]) {
+        self.inputContent = content
     }
+    
+    override func main() {
+        let manager = FileManager()
+        for file in inputContent {
+            let res = inputContent.filter {
+               manager.contentsEqual(atPath: file.path.path, andPath: $0.path.path)
+            }
+            print("\(inputContent.index(of: file)!) from \(String(describing:inputContent.count))")
+            
+            if res.count > 1 { result.append(contentsOf: res) }
+        }
+        result.map { print($0.name)}
+    }
+    
 }
 
 
