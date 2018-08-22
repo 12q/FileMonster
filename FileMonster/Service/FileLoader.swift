@@ -9,16 +9,16 @@
 import Foundation
 
 protocol Loader {
-    func load(path: URL)
+    func load(path: URL, option: SelectOption)
 }
 
 class FileLoader {
     private let manager = FileManager()
     private let store = DataStore.shared
 
-    func load(path: URL) {
+    func load(path: URL, option: SelectOption) {
         let paths = contentsOf(folder: path)
-        store.set(paths: paths)
+        store.set(paths: paths, drain: option == .none)
     }
 
     func contentsOf(folder: URL) -> [URL] {
