@@ -8,13 +8,26 @@
 
 import Foundation
 
+// MARK: - Operation Stack - Protocol
+
+protocol OperationStackDelegate: class {
+    func didUpdate(oparations: [FileOperation])
+}
+
+// MARK: - Operation Stack - Init
+
 class OperationStack {
+    /// Wraper around the native OperationQueue
+    ///`default` implementation for a stack that keeps operation queue
+    /// 5 parallel operations by default
     
-    let concurentOperations: Int
+    public weak var delegate: OperationStackDelegate?
     
     open static var `default`: OperationStack {
         return OperationStack(concurentOperations: 5)
     }
+
+    let concurentOperations: Int
     
     var stack: OperationQueue {
         let queue = OperationQueue()
@@ -23,15 +36,42 @@ class OperationStack {
         print("get com.mobndev.filemonster.queue")
         return queue
     }
-    
+
     init(concurentOperations: Int) {
         self.concurentOperations = concurentOperations
     }
+}
+
+// MARK: - OperationStack - Interface
+
+extension OperationStack {
+    func add(operation: FileOperation) {
+        stack.addOperation(operation)
+        didUpdate()
+    }
     
-    func add(op: FileOperation) {
-        stack.addOperation(op)
+    func drop(oparation: FileOperation) {
+        oparation.cancel()
+        didUpdate()
+    }
+    
+    func release() {}
+}
+
+// MARK: - OperationStack - Delegate
+
+extension OperationStack {
+    func didUpdate() {
+        if let fileOperations = stack.operations as? [FileOperation] {
+            delegate?.didUpdate(oparations: fileOperations)
+        }
     }
 }
+
+
+
+
+
 
 protocol OperationProgressDelegate: AnyObject {
     func didUpdateProgress(fractionCompleted: Double)
