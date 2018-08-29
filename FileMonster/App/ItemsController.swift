@@ -14,9 +14,13 @@ class ItemsController: NSViewController {
     
     @IBOutlet weak var moarButton: NSButton!
     @IBOutlet weak var duplicationButton: NSButton!
+    @IBOutlet weak var duplicationProgress: NSProgressIndicator!
     
-    private var fileLoader: Loader?
+    lazy var operationStack = OperationStack.default
     private let store = DataStore.shared
+
+    // DI
+    private var fileLoader: Loader?
 
     var content: [File] = []
 
@@ -35,10 +39,10 @@ class ItemsController: NSViewController {
         showSelectFolderDialog(option: .adding)
     }
     
-    
     @IBAction func duplicatinSearch(_ sender: Any) {
-        let operationStack = OperationStack()
-        operationStack.add(op: FileOperation(with: content))
+        let duplication = SearchingDuplicatesOperation(with: content)
+        duplication.delegate = self
+        operationStack.add(op: duplication)
     }
     
     override func viewDidLoad() {
@@ -91,11 +95,21 @@ extension ItemsController: NSTableViewDataSource {
 }
 
 // MARK: -  Data Store Delegate
-
 extension ItemsController: DataStoreDelegate {
     func didUpdate(content: [File]) {
         self.content = content
         tableView.reloadData()
     }
 }
+
+// MARK: - Operation Stack Delegate
+extension ItemsController: OperationProgressDelegate {
+    func didUpdateProgress(fractionCompleted: Double) {
+        DispatchQueue.main.async { [unowned self] in
+            self.duplicationProgress.doubleValue = fractionCompleted
+        }
+    }
+}
+
+
 

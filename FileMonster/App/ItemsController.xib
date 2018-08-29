@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ItemsController" customModule="FileMonster">
             <connections>
                 <outlet property="duplicationButton" destination="3JT-tI-0Gg" id="q2U-Qy-0Fq"/>
+                <outlet property="duplicationProgress" destination="3Qb-JQ-OwB" id="77E-TS-zm7"/>
                 <outlet property="moarButton" destination="bGo-oJ-iXA" id="HcZ-P5-kXS"/>
                 <outlet property="selectButton" destination="SSy-XB-LGH" id="yqy-sj-0po"/>
                 <outlet property="tableView" destination="z2q-Hj-VoD" id="k4u-pG-C6H"/>
@@ -83,6 +84,13 @@
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="9bM-UR-lby">
                     <rect key="frame" x="0.0" y="8" width="480" height="5"/>
                 </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7wK-pB-LYx">
+                    <rect key="frame" x="404" y="217" width="62" height="32"/>
+                    <buttonCell key="cell" type="push" title="Go!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pqV-4e-H8j">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SSy-XB-LGH">
                     <rect key="frame" x="6" y="217" width="120" height="32"/>
                     <buttonCell key="cell" type="push" title="Select Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d9l-fa-fGD">
@@ -113,26 +121,25 @@
                         <action selector="addOneMorePath:" target="-2" id="G5U-GD-zxR"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7wK-pB-LYx">
-                    <rect key="frame" x="404" y="217" width="62" height="32"/>
-                    <buttonCell key="cell" type="push" title="Go!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pqV-4e-H8j">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
+                <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="3Qb-JQ-OwB">
+                    <rect key="frame" x="181" y="207" width="103" height="20"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="SSy-XB-LGH" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="12" id="3cY-6n-HrO"/>
                 <constraint firstAttribute="bottom" secondItem="jyb-Os-yEA" secondAttribute="bottom" constant="20" id="QOW-z6-oBb"/>
                 <constraint firstAttribute="trailing" secondItem="jyb-Os-yEA" secondAttribute="trailing" id="VRz-QQ-N19"/>
                 <constraint firstAttribute="trailing" secondItem="9bM-UR-lby" secondAttribute="trailing" id="WUh-dq-BOR"/>
+                <constraint firstItem="3Qb-JQ-OwB" firstAttribute="centerX" secondItem="3JT-tI-0Gg" secondAttribute="centerX" id="WYV-C0-PCz"/>
                 <constraint firstItem="bGo-oJ-iXA" firstAttribute="leading" secondItem="SSy-XB-LGH" secondAttribute="trailing" constant="12" id="Wey-I4-E64"/>
+                <constraint firstItem="3Qb-JQ-OwB" firstAttribute="top" secondItem="3JT-tI-0Gg" secondAttribute="bottom" constant="-2" id="X6R-Jq-wGC"/>
                 <constraint firstItem="3JT-tI-0Gg" firstAttribute="centerY" secondItem="SSy-XB-LGH" secondAttribute="centerY" id="aE9-6U-HXC"/>
                 <constraint firstAttribute="bottom" secondItem="9bM-UR-lby" secondAttribute="bottom" constant="10" id="c56-ZN-zQY"/>
                 <constraint firstItem="jyb-Os-yEA" firstAttribute="top" secondItem="SSy-XB-LGH" secondAttribute="bottom" constant="12" id="cKe-vO-aoB"/>
                 <constraint firstItem="3JT-tI-0Gg" firstAttribute="leading" secondItem="bGo-oJ-iXA" secondAttribute="trailing" constant="12" id="dAQ-Vc-ZwD"/>
                 <constraint firstItem="SSy-XB-LGH" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="27" id="jcB-mR-CaV"/>
                 <constraint firstItem="7wK-pB-LYx" firstAttribute="centerY" secondItem="SSy-XB-LGH" secondAttribute="centerY" id="kAI-h6-Bto"/>
+                <constraint firstItem="3Qb-JQ-OwB" firstAttribute="width" secondItem="3JT-tI-0Gg" secondAttribute="width" id="ks9-Oj-hsB"/>
                 <constraint firstItem="jyb-Os-yEA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="ns0-HV-SJl"/>
                 <constraint firstItem="bGo-oJ-iXA" firstAttribute="centerY" secondItem="SSy-XB-LGH" secondAttribute="centerY" id="wzg-vC-mPb"/>
                 <constraint firstItem="9bM-UR-lby" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="x0G-v0-VnT"/>
