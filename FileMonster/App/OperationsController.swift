@@ -17,16 +17,16 @@ class OperationsController: NSViewController {
 }
 
 enum OperationType {
-    case FileterByName, FindDuplicates, SortByMake
+    case duplicates, sort
     
     func name() -> String {
         switch self {
-        case .FileterByName:
-            return "Filter by Alhabetic"
-        case .FindDuplicates:
+        case .sort:
+            return "Filter by Name"
+        case .duplicates:
             return "Searching for duplicates"
-        case .SortByMake:
-            return "Categorize images"
+//        case .SortByMake:
+//            return "Categorize images"
         default:
             return "No Option"
         }
@@ -35,7 +35,7 @@ enum OperationType {
 
 extension OperationType {
     static var allValues: [OperationType] {
-        return [.FileterByName, .FindDuplicates, .SortByMake]
+        return [.duplicates, .sort]
     }
 }
 
