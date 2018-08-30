@@ -10,48 +10,46 @@ import Cocoa
 
 class OperationsController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
+    
+    private let operationStack = OperationStack.shared
+    private var content: [FileOperation] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        operationStack.delegate = self
     }
 }
 
-enum OperationType {
-    case duplicates, sort
-    
-    func name() -> String {
-        switch self {
-        case .sort:
-            return "Filter by Name"
-        case .duplicates:
-            return "Searching for duplicates"
-//        case .SortByMake:
-//            return "Categorize images"
-        default:
-            return "No Option"
-        }
-    }
-}
-
-extension OperationType {
-    static var allValues: [OperationType] {
-        return [.duplicates, .sort]
-    }
-}
+// MARK: - TableView - DataSource
 
 extension OperationsController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return OperationType.allValues.count
+        return operationStack.currentCount() 
     }
 }
 
-extension  OperationsController: NSTableViewDelegate {
+// MARK: - TableView - Delegate
+
+extension OperationsController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "OperationCell"), owner: nil) as? NSTableCellView {
-            cell.textField?.stringValue =  OperationType.allValues[row].name()
+       
+        let operation = content[row]
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "OperationCell"), owner: self) as? OperationCellView {
+            cell.textField?.stringValue = operation.type.name()
+            cell.operation = operation
             return cell
         }
         return nil
+    }
+}
+
+// MARK: - OperationStack - Delegate
+
+extension OperationsController: OperationStackDelegate {
+    func didUpdate() {
+        guard let operations = operationStack.currentOperations() else { return }
+        content = operations
+        tableView.reloadData()
     }
 }
 
