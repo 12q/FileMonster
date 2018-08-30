@@ -6,4 +6,21 @@
 //  Copyright © 2018 Slava Plis. All rights reserved.
 //
 
-import Foundation
+enum OperationType {
+    case duplicates, sort
+    
+    func name() -> String {
+        switch self {
+        case .sort:
+            return "Filter by Name"
+        case .duplicates:
+            return "Searching for duplicates"
+        }
+    }
+}
+
+extension OperationType {
+    static var allValues: [OperationType] {
+        return [.duplicates, .sort]
+    }
+}
