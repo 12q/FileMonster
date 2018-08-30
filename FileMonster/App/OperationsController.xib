@@ -82,15 +82,18 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GZn-gi-ZvI">
-                                                        <rect key="frame" x="187" y="8" width="21" height="24"/>
+                                                        <rect key="frame" x="187" y="9" width="21" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="21" id="HTk-Ej-U9R"/>
                                                             <constraint firstAttribute="height" constant="21" id="gAz-NY-hh9"/>
                                                         </constraints>
-                                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="close-icon" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pPF-e2-CXd">
+                                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="close-icon" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pPF-e2-CXd">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="smallSystemBold"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="cancel:" target="PjH-H4-Hiq" id="79r-mS-cHU"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
