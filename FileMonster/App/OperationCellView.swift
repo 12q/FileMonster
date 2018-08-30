@@ -9,11 +9,26 @@
 import Cocoa
 
 class OperationCellView: NSTableCellView {
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    public var operation: FileOperation? {
+        didSet {
+            operation?.delegate = self
+        }
     }
     
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+}
+
+extension OperationCellView: OperationProgressDelegate {
+    func didUpdateProgress(fractionCompleted: Double) {
+        DispatchQueue.main.async { [unowned self] in
+            self.progressIndicator.doubleValue = fractionCompleted
+        }
+    }
 }
