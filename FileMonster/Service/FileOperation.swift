@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+protocol OperationProgressDelegate: AnyObject {
+    func didUpdateProgress(fractionCompleted: Double)
+}
+
+class FileOperation: Operation {
+    public weak var delegate: OperationProgressDelegate?
+    public let type: OperationType
+    internal var content: [File]
+    
+    init(with content: [File], type: OperationType) {
+        self.type = type
+        self.content = content
+    }
+}
