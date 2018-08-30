@@ -14,9 +14,8 @@ class ItemsController: NSViewController {
     
     @IBOutlet weak var moarButton: NSButton!
     @IBOutlet weak var duplicationButton: NSButton!
-    @IBOutlet weak var duplicationProgress: NSProgressIndicator!
     
-    lazy var operationStack = OperationStack.default
+    let operationStack = OperationStack.shared
     private let store = DataStore.shared
 
     // DI
@@ -27,6 +26,11 @@ class ItemsController: NSViewController {
     // Service Dependency
     func set(loadService: Loader) {
         self.fileLoader = loadService
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        store.delegate = self
     }
     
     // Mark: - User Actions
@@ -41,13 +45,7 @@ class ItemsController: NSViewController {
     
     @IBAction func duplicatinSearch(_ sender: Any) {
         let duplication = SearchingDuplicatesOperation(with: content)
-        duplication.delegate = self
-        operationStack.add(op: duplication)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        store.delegate = self
+        operationStack.add(operation: duplication)
     }
 }
 
@@ -102,14 +100,12 @@ extension ItemsController: DataStoreDelegate {
     }
 }
 
-// MARK: - Operation Stack Delegate
-extension ItemsController: OperationProgressDelegate {
-    func didUpdateProgress(fractionCompleted: Double) {
-        DispatchQueue.main.async { [unowned self] in
-            self.duplicationProgress.doubleValue = fractionCompleted
-        }
-    }
-}
-
-
+//// MARK: - Operation Stack Delegate
+//extension ItemsController: OperationProgressDelegate {
+//    func didUpdateProgress(fractionCompleted: Double) {
+//        DispatchQueue.main.async { [unowned self] in
+//            self.duplicationProgress.doubleValue = fractionCompleted
+//        }
+//    }
+//}
 
