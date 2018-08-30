@@ -16,6 +16,10 @@ class OperationCellView: NSTableCellView {
         }
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        operation?.cancel()
+    }
+    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
     }
