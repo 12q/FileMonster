@@ -11,30 +11,21 @@ import Cocoa
 class ItemsController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var selectButton: NSButton!
-    
     @IBOutlet weak var moarButton: NSButton!
     @IBOutlet weak var duplicationButton: NSButton!
     
-    let operationStack = OperationStack.shared
-    private let store = DataStore.shared
-
-    // DI
-    private var fileLoader: Loader?
-
     var content: [File] = []
 
-    // Service Dependency
-    func set(loadService: Loader) {
-        self.fileLoader = loadService
+    /// Injected Services
+    public var operationStack: OperationStack?
+    public var fileLoader: Loader?
+    public var dataStore: DataStore? {
+        didSet {
+            dataStore?.delegate = self
+        }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        store.delegate = self
-    }
-    
-    // Mark: - User Actions
-    
+    /// User Actions
     @IBAction func selectFolder(_ sender: Any) {
         showSelectFolderDialog(option: .none)
     }
@@ -45,15 +36,17 @@ class ItemsController: NSViewController {
     
     @IBAction func duplicatinSearch(_ sender: Any) {
         let duplication = SearchingDuplicatesOperation(with: content)
-        operationStack.add(operation: duplication)
+        operationStack?.add(operation: duplication)
     }
 }
 
-// MARK: - File Open Panel
+// MARK: - Selection Options for the New Paths
 
 enum SelectOption {
     case none, renew, adding
 }
+
+// MARK: - File Open Panel
 
 extension ItemsController {
     func showSelectFolderDialog(option: SelectOption) {
@@ -68,6 +61,15 @@ extension ItemsController {
                 loader.load(path: selectedPath, option: option)
             }
         }
+    }
+}
+
+// MARK: -  Data Store Delegate
+
+extension ItemsController: DataStoreDelegate {
+    func didUpdate(content: [File]) {
+        self.content = content
+        tableView.reloadData()
     }
 }
 
@@ -91,21 +93,3 @@ extension ItemsController: NSTableViewDataSource {
         return "Check identifier for Cell ;P"
     }
 }
-
-// MARK: -  Data Store Delegate
-extension ItemsController: DataStoreDelegate {
-    func didUpdate(content: [File]) {
-        self.content = content
-        tableView.reloadData()
-    }
-}
-
-//// MARK: - Operation Stack Delegate
-//extension ItemsController: OperationProgressDelegate {
-//    func didUpdateProgress(fractionCompleted: Double) {
-//        DispatchQueue.main.async { [unowned self] in
-//            self.duplicationProgress.doubleValue = fractionCompleted
-//        }
-//    }
-//}
-
