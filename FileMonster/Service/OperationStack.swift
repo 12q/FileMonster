@@ -27,49 +27,38 @@ class OperationQueueFactory {
 // MARK: - Operation Stack - Init
 
 class OperationStack {
+    
     /// Wraper around the native OperationQueue
     ///`default` implementation for a stack that keeps operation queue
-    /// 5 parallel operations by default
-    
+    /// with 5 parallel operations by default
+    private var stack: OperationQueue = OperationQueueFactory.default()
     public weak var delegate: OperationStackDelegate?
+    private var kvo: NSKeyValueObservation?
     
-    static let shared = OperationStack.default
-    
-    open static var `default`: OperationStack {
-        return OperationStack(concurentOperations: 5)
-    }
-
-    let concurentOperations: Int
-    var count: Int {
-        return stack.operations.count
-    }
-    
-    var stack: OperationQueue = OperationQueueFactory.default()
-    
-    init(concurentOperations: Int) {
-        self.concurentOperations = concurentOperations
+    init() {
+        kvo = stack.observe(\.operations) { [unowned self] (stack, change) in
+            DispatchQueue.main.async {
+                self.didUpdate()
+            }
+        }
     }
 }
-
-// MARK: - OperationStack - Interface
 
 //enum Result<T, E:Error> {
 //    case success(T)
 //    case failure(E)
 //}
 
+// MARK: - OperationStack - Interface
+
 extension OperationStack {
     func add(operation: FileOperation) {
         stack.addOperation(operation)
-        didUpdate()
     }
     
     func drop(oparation: FileOperation) {
         oparation.cancel()
-        didUpdate()
     }
-    
-    func release() {}
     
     public func currentCount() -> Int {
         return stack.operations.count
