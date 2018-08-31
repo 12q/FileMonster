@@ -18,19 +18,17 @@ class RootWindowController: NSWindowController {
         super.windowDidLoad()
         
         /// Services
-        /// kinda DI
         let store = DataStore()
         let loader = FileLoader(dataStore: store)
         let stack = OperationStack()
         
-
         /// Base View Controller
         let spitController = NSSplitViewController()
         
         /// View Controller
         /// - shows current operations list
         /// * each operation shows its progress and could be canceled
-
+        
         let currentOperationsViewController = OperationsController()
         currentOperationsViewController.operationStack = stack
         
@@ -50,5 +48,4 @@ class RootWindowController: NSWindowController {
         // Setting Up the Root Controller
         window?.contentViewController = spitController
     }
-    
 }

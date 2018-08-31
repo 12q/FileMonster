@@ -17,7 +17,7 @@ class DataStore {
     private var content: [File] = []
     
     /// Converts the lits of URLs into objects
-    /// - Parameter drain: The bool that just points whether we keeps pervious elements or not
+    /// @param drain: The bool that just points whether we keeps pervious elements or not
     func set(paths: [URL], drain: Bool) {
         if drain { content.removeAll() }
         
