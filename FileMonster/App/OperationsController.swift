@@ -30,8 +30,7 @@ class OperationsController: NSViewController {
 // MARK: - OperationStack - Delegate
 
 extension OperationsController: OperationStackDelegate {
-    func didUpdate() {
-        guard let operations = operationStack?.currentOperations() else { return }
+    func didUpdate(operations: [FileOperation]) {
         content = operations
     }
 }
