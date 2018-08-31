@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Operation Stack - Protocol
 
 protocol OperationStackDelegate: class {
-    func didUpdate()
+    func didUpdate(operations: [FileOperation])
 }
 
 class OperationQueueFactory {
@@ -31,6 +31,7 @@ class OperationStack {
     /// Wraper around the native OperationQueue
     ///`default` implementation for a stack that keeps operation queue
     /// with 5 parallel operations by default
+    
     private var stack: OperationQueue = OperationQueueFactory.default()
     public weak var delegate: OperationStackDelegate?
     private var kvo: NSKeyValueObservation?
@@ -44,31 +45,11 @@ class OperationStack {
     }
 }
 
-//enum Result<T, E:Error> {
-//    case success(T)
-//    case failure(E)
-//}
-
 // MARK: - OperationStack - Interface
 
 extension OperationStack {
     func add(operation: FileOperation) {
         stack.addOperation(operation)
-    }
-    
-    func drop(oparation: FileOperation) {
-        oparation.cancel()
-    }
-    
-    public func currentCount() -> Int {
-        return stack.operations.count
-    }
-    
-    public func currentOperations() -> [FileOperation]? {
-        if let fileOperations = stack.operations as? [FileOperation] {
-            return fileOperations
-        }
-        return []
     }
 }
 
@@ -76,6 +57,7 @@ extension OperationStack {
 
 extension OperationStack {
     func didUpdate() {
-        delegate?.didUpdate()
+        guard let operations = stack.operations as? [FileOperation] else { return }
+        delegate?.didUpdate(operations: operations)
     }
 }
