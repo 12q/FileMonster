@@ -18,18 +18,34 @@ class RootWindowController: NSWindowController {
         super.windowDidLoad()
         
         /// Services
-        let loader = FileLoader()
+        /// kinda DI
+        let store = DataStore()
+        let loader = FileLoader(dataStore: store)
+        let stack = OperationStack()
+        
 
-        // UI Base Controllers
+        /// Base View Controller
         let spitController = NSSplitViewController()
         
-        let operationsVC = OperationsController()
-        
-        let itemsVC = ItemsController()
-        itemsVC.set(loadService: loader)
+        /// View Controller
+        /// - shows current operations list
+        /// * each operation shows its progress and could be canceled
 
-        spitController.addSplitViewItem(NSSplitViewItem(viewController: operationsVC))
-        spitController.addSplitViewItem(NSSplitViewItem(viewController: itemsVC))
+        let currentOperationsViewController = OperationsController()
+        currentOperationsViewController.operationStack = stack
+        
+        /// View Controller shows the content of the selected folder
+        /// - selects the path to operate with
+        /// - performs the oprations
+        /// - displays the result of the performed opration
+        
+        let fileBrowserViewController = ItemsController()
+        fileBrowserViewController.dataStore = store
+        fileBrowserViewController.fileLoader = loader
+        fileBrowserViewController.operationStack = stack
+
+        spitController.addSplitViewItem(NSSplitViewItem(viewController: currentOperationsViewController))
+        spitController.addSplitViewItem(NSSplitViewItem(viewController: fileBrowserViewController))
         
         // Setting Up the Root Controller
         window?.contentViewController = spitController
