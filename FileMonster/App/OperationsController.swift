@@ -11,12 +11,28 @@ import Cocoa
 class OperationsController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     
-    private let operationStack = OperationStack.shared
-    private var content: [FileOperation] = []
-        
+    public var operationStack: OperationStack? {
+        didSet {
+            operationStack?.delegate = self
+        }
+    }
+    private var content: [FileOperation] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        operationStack.delegate = self
+    }
+}
+
+// MARK: - OperationStack - Delegate
+
+extension OperationsController: OperationStackDelegate {
+    func didUpdate() {
+        guard let operations = operationStack?.currentOperations() else { return }
+        content = operations
     }
 }
 
@@ -24,7 +40,7 @@ class OperationsController: NSViewController {
 
 extension OperationsController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return operationStack.currentCount() 
+        return content.count
     }
 }
 
@@ -40,16 +56,6 @@ extension OperationsController: NSTableViewDelegate {
             return cell
         }
         return nil
-    }
-}
-
-// MARK: - OperationStack - Delegate
-
-extension OperationsController: OperationStackDelegate {
-    func didUpdate() {
-        guard let operations = operationStack.currentOperations() else { return }
-        content = operations
-        tableView.reloadData()
     }
 }
 
