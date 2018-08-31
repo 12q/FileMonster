@@ -14,11 +14,15 @@ protocol Loader {
 
 class FileLoader {
     private let manager = FileManager()
-    private let store = DataStore.shared
+    private let dataStore: DataStore
 
+    init(dataStore: DataStore) {
+        self.dataStore = dataStore
+    }
+    
     func load(path: URL, option: SelectOption) {
         let paths = contentsOf(folder: path)
-        store.set(paths: paths, drain: option == .none)
+        dataStore.set(paths: paths, drain: option == .none)
     }
 
     func contentsOf(folder: URL) -> [URL] {
