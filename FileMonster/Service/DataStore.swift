@@ -14,7 +14,6 @@ protocol DataStoreDelegate: AnyObject {
 
 class DataStore {
     weak var delegate: DataStoreDelegate?
-    static let shared = DataStore()
     private var content: [File] = []
     
     /// Converts the lits of URLs into objects
