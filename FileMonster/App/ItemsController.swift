@@ -8,13 +8,20 @@
 
 import Cocoa
 
+/// Cell Identifiers
+fileprivate enum Identifiers {
+    static let NameCell = "NameCellIdentifier"
+    static let DateCell = "DateCellIdentifier"
+    static let SizeCell = "SizeCellIdentifier"
+}
+
 class ItemsController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var selectButton: NSButton!
     @IBOutlet weak var moarButton: NSButton!
     @IBOutlet weak var duplicationButton: NSButton!
     
-    var content: [File] = []
+    fileprivate var content: [File] = []
 
     /// Injected Services
     public var operationStack: OperationStack?
@@ -24,6 +31,13 @@ class ItemsController: NSViewController {
             dataStore?.delegate = self
         }
     }
+    
+    /// Formaters
+    let sizeFormatter = ByteCountFormatter()
+//    let dateFormatter = DateFormatter()
+//    dateFormatter.dateStyle = .full
+//    dateFormatter.timeStyle = .none
+    
     
     /// User Actions
     @IBAction func selectFolder(_ sender: Any) {
@@ -79,17 +93,67 @@ extension ItemsController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return content.count
     }
+}
 
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+extension ItemsController: NSTableViewDelegate {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+
+        guard let identifier = tableColumn?.identifier else { return nil }
+        guard let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as? NSTableCellView else { return nil }
+
+        let a = configure(cell: cell, row: row)
+        
+        return a
+    }
+
+    func configure(cell: NSTableCellView, row: Int) -> NSTableCellView {
+        /* erm, strange compiler behavior
+         see: line 37
+         uncommnent and try to build
+         */
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long 
+        dateFormatter.timeStyle = .none
+        
         let file = content[row]
+        guard let identifier = cell.identifier?.rawValue else { return cell }
         
-        if tableColumn?.identifier.rawValue == "names" {
-            return file.name
+        switch identifier {
+        case Identifiers.NameCell:
+            cell.imageView?.image = file.icon ?? NSImage()
+            cell.textField?.stringValue = file.name
+        case Identifiers.DateCell:
+            cell.textField?.stringValue = dateFormatter.string(from: file.date ?? Date())
+        case Identifiers.SizeCell:
+            cell.textField?.stringValue = sizeFormatter.string(fromByteCount: file.size ?? Int64(0))
+        default:
+            print("fdfd")
         }
         
-        if tableColumn?.identifier.rawValue == "props" {
-            return file.path
-        }
-        return "Check identifier for Cell ;P"
+        return cell
     }
 }
+
+//
+//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+//        let file = content[row]
+//
+//        if tableColumn?.identifier.rawValue == "icon" {
+//            return file.icon ?? NSImage()
+//        }
+//
+//        if tableColumn?.identifier.rawValue == "name" {
+//            return file.name
+//        }
+//
+//        if tableColumn?.identifier.rawValue == "date" {
+//            return dateFormatter.string(from: file.date ?? Date())
+//        }
+//
+//        if tableColumn?.identifier.rawValue == "size" {
+//            return sizeFormatter.string(fromByteCount: file.size ?? Int64(0))
+//        }
+//
+//        return "Check identifier for Cell ;P"
+//    }
+
