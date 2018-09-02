@@ -113,9 +113,8 @@ extension ItemsController: NSTableViewDelegate {
         guard let identifier = tableColumn?.identifier else { return nil }
         guard let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as? NSTableCellView else { return nil }
 
-        let a = configure(cell: cell, row: row)
-        
-        return a
+        configure(cell: cell, row: row)
+        return cell
     }
 
     func configure(cell: NSTableCellView, row: Int) -> NSTableCellView {
