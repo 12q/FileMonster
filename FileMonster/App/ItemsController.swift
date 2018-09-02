@@ -51,6 +51,13 @@ class ItemsController: NSViewController {
     @IBAction func duplicatinSearch(_ sender: Any) {
         let duplication = SearchingDuplicatesOperation(with: content)
         operationStack?.add(operation: duplication)
+        
+        duplicationButton.isEnabled = false
+        duplication.completionBlock = { [unowned self] in
+            DispatchQueue.main.async {
+                self.duplicationButton.isEnabled = true
+            }
+        }
     }
 }
 
@@ -112,7 +119,7 @@ extension ItemsController: NSTableViewDelegate {
          uncommnent and try to build
          */
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long 
+        dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .none
         
         let file = content[row]
