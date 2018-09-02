@@ -8,8 +8,11 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ItemsController" customModule="FileMonster">
             <connections>
-                <outlet property="duplicationButton" destination="3JT-tI-0Gg" id="q2U-Qy-0Fq"/>
+                <outlet property="calculateHashButton" destination="Yuc-Ex-4dq" id="Bub-gB-Drl"/>
+                <outlet property="duplicationButton" destination="ojN-Qf-uMT" id="41w-IC-TYh"/>
                 <outlet property="moarButton" destination="bGo-oJ-iXA" id="HcZ-P5-kXS"/>
+                <outlet property="operationBox" destination="Bne-ch-PPN" id="65V-7Y-7yh"/>
+                <outlet property="runButton" destination="pgu-nE-smG" id="q7n-6A-pLP"/>
                 <outlet property="selectButton" destination="SSy-XB-LGH" id="yqy-sj-0po"/>
                 <outlet property="tableView" destination="z2q-Hj-VoD" id="k4u-pG-C6H"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -174,7 +177,7 @@
                         <font key="font" metaFont="system" size="11"/>
                     </buttonCell>
                     <connections>
-                        <action selector="selectFolder:" target="-2" id="58W-6Y-1YS"/>
+                        <action selector="runSelectedOperations:" target="-2" id="w0u-qA-KAo"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bGo-oJ-iXA">
@@ -191,32 +194,21 @@
                         <action selector="addOneMorePath:" target="-2" id="G5U-GD-zxR"/>
                     </connections>
                 </button>
-                <box boxType="custom" title="Operations" titlePosition="belowTop" translatesAutoresizingMaskIntoConstraints="NO" id="Bne-ch-PPN">
+                <box focusRingType="none" boxType="custom" title="Operations" titlePosition="belowTop" translatesAutoresizingMaskIntoConstraints="NO" id="Bne-ch-PPN">
                     <rect key="frame" x="241" y="193" width="124" height="54"/>
-                    <view key="contentView" id="NVj-Dc-KyS">
+                    <view key="contentView" focusRingType="none" appearanceType="aqua" id="NVj-Dc-KyS">
                         <rect key="frame" x="1" y="1" width="122" height="52"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5J-pG-F2g">
-                                <rect key="frame" x="74" y="8" width="43" height="36"/>
+                            <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojN-Qf-uMT">
+                                <rect key="frame" x="8" y="6" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="hash" bezelStyle="shadowlessSquare" image="hash-icon" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="gN8-M6-tUY">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="duplicates-icon" imagePosition="only" alignment="center" enabled="NO" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="VJY-nd-Ngy">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="duplicatinSearch:" target="-2" id="Iih-nH-THz"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3JT-tI-0Gg">
-                                <rect key="frame" x="8" y="8" width="43" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="duplicates" bezelStyle="shadowlessSquare" image="duplicates-icon" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="NqU-fR-Jlo">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="11"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="duplicatinSearch:" target="-2" id="OYJ-Jm-yWc"/>
+                                    <action selector="duplicatinSearch:" target="-2" id="hpw-4X-e0U"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -251,6 +243,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="selectFolder:" target="-2" id="KtG-6k-cqT"/>
+                    </connections>
+                </button>
+                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yuc-Ex-4dq">
+                    <rect key="frame" x="315" y="200" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="hash-icon" imagePosition="only" alignment="center" enabled="NO" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="Qum-x4-3nY">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="calculateHash:" target="-2" id="jBI-Cd-tDN"/>
                     </connections>
                 </button>
             </subviews>
