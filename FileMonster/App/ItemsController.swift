@@ -89,6 +89,11 @@ extension ItemsController {
 
 extension ItemsController: DataStoreDelegate {
     func didUpdate(content: [File]) {
+
+        if content.count > 0 {
+            duplicationButton.isEnabled = true
+        }
+        
         self.content = content
         tableView.reloadData()
     }

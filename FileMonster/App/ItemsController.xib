@@ -181,7 +181,7 @@
                 </button>
                 <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3JT-tI-0Gg">
                     <rect key="frame" x="164" y="217" width="107" height="32"/>
-                    <buttonCell key="cell" type="push" title="Duplications" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NqU-fR-Jlo">
+                    <buttonCell key="cell" type="push" title="Duplications" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NqU-fR-Jlo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
