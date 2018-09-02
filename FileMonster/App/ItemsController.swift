@@ -116,7 +116,8 @@ extension ItemsController: NSTableViewDelegate {
         configure(cell: cell, row: row)
         return cell
     }
-
+    
+    @discardableResult
     func configure(cell: NSTableCellView, row: Int) -> NSTableCellView {
         /* erm, strange compiler behavior
          see: line 37
