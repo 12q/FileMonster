@@ -19,9 +19,20 @@ class ItemsController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var selectButton: NSButton!
     @IBOutlet weak var moarButton: NSButton!
-    @IBOutlet weak var duplicationButton: NSButton!
     
-    fileprivate var content: [File] = []
+    @IBOutlet weak var operationBox: NSBox!
+    @IBOutlet weak var duplicationButton: NSButton!
+    @IBOutlet weak var calculateHashButton: NSButton!
+    
+    @IBOutlet weak var runButton: NSButton!
+    
+    fileprivate var content: [File] = [] {
+        didSet {
+            guard content.count > 0 else { return }
+            duplicationButton.isEnabled = true
+            calculateHashButton.isEnabled = true
+        }
+    }
 
     /// Injected Services
     public var operationStack: OperationStack?
@@ -49,16 +60,38 @@ class ItemsController: NSViewController {
     }
     
     @IBAction func duplicatinSearch(_ sender: Any) {
-        let duplication = SearchingDuplicatesOperation(with: content)
-        operationStack?.add(operation: duplication)
-        
-        duplicationButton.isEnabled = false
-        duplication.completionBlock = { [unowned self] in
-            DispatchQueue.main.async {
-                self.duplicationButton.isEnabled = true
+        duplicationButton.isBordered =  !duplicationButton.isBordered
+
+       
+    }
+    
+    @IBAction func calculateHash(_ sender: Any) {
+        calculateHashButton.isBordered = !calculateHashButton.isBordered
+    }
+    
+    /// Create the matched operations
+    /// and push them into the stack
+    @IBAction func runSelectedOperations(_ sender: Any) {
+        /*
+         Trackig selected opereation by isBordered property of its button
+         Sorry 'bout that:]
+         */
+        if duplicationButton.isBordered {
+            let duplicationOperation = SearchingDuplicatesOperation(with: content)
+            duplicationButton.isEnabled = false
+            duplicationOperation.completionBlock = { [unowned self] in
+                DispatchQueue.main.async {
+                    self.duplicationButton.isEnabled = true
+                }
             }
+            operationStack?.add(operation: duplicationOperation)
+        }
+        
+        if calculateHashButton.isBordered {
+            // DO SOMETHING
         }
     }
+    
 }
 
 // MARK: - Selection Options for the New Paths
@@ -89,11 +122,6 @@ extension ItemsController {
 
 extension ItemsController: DataStoreDelegate {
     func didUpdate(content: [File]) {
-
-        if content.count > 0 {
-            duplicationButton.isEnabled = true
-        }
-        
         self.content = content
         tableView.reloadData()
     }
