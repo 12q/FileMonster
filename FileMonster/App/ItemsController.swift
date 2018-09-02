@@ -139,33 +139,10 @@ extension ItemsController: NSTableViewDelegate {
         case Identifiers.SizeCell:
             cell.textField?.stringValue = sizeFormatter.string(fromByteCount: file.size ?? Int64(0))
         default:
-            print("fdfd")
+            print("Check ItemsController: func configure {...}")
         }
         
         return cell
     }
 }
-
-//
-//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-//        let file = content[row]
-//
-//        if tableColumn?.identifier.rawValue == "icon" {
-//            return file.icon ?? NSImage()
-//        }
-//
-//        if tableColumn?.identifier.rawValue == "name" {
-//            return file.name
-//        }
-//
-//        if tableColumn?.identifier.rawValue == "date" {
-//            return dateFormatter.string(from: file.date ?? Date())
-//        }
-//
-//        if tableColumn?.identifier.rawValue == "size" {
-//            return sizeFormatter.string(fromByteCount: file.size ?? Int64(0))
-//        }
-//
-//        return "Check identifier for Cell ;P"
-//    }
 
