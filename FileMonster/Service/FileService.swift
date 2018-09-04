@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FileService {
+class FileManager {
     func remove(at path: URL) {}
     func move(at path: URL) {}
     func get(at path: URL) {}

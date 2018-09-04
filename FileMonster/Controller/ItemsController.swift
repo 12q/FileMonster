@@ -43,6 +43,18 @@ class ItemsController: NSViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let descriptorName = NSSortDescriptor(key: "name", ascending: true)
+//        let descriptorDate = NSSortDescriptor(key: Directory.FileOrder.Date.rawValue, ascending: true)
+//        let descriptorSize = NSSortDescriptor(key: Directory.FileOrder.Size.rawValue, ascending: true)
+        
+        tableView.tableColumns[0].sortDescriptorPrototype = descriptorName
+//        tableView.tableColumns[1].sortDescriptorPrototype = descriptorDate
+//        tableView.tableColumns[2].sortDescriptorPrototype = descriptorSize
+    }
+    
     /// Formaters
     let sizeFormatter = ByteCountFormatter()
 //    let dateFormatter = DateFormatter()
@@ -61,8 +73,6 @@ class ItemsController: NSViewController {
     
     @IBAction func duplicatinSearch(_ sender: Any) {
         duplicationButton.isBordered =  !duplicationButton.isBordered
-
-       
     }
     
     @IBAction func calculateHash(_ sender: Any) {
@@ -136,6 +146,7 @@ extension ItemsController: NSTableViewDataSource {
 }
 
 extension ItemsController: NSTableViewDelegate {
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
         guard let identifier = tableColumn?.identifier else { return nil }

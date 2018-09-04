@@ -211,6 +211,17 @@
                                     <action selector="duplicatinSearch:" target="-2" id="hpw-4X-e0U"/>
                                 </connections>
                             </button>
+                            <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yuc-Ex-4dq">
+                                <rect key="frame" x="74" y="6" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="hash-icon" imagePosition="only" alignment="center" enabled="NO" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="Qum-x4-3nY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="calculateHash:" target="-2" id="jBI-Cd-tDN"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <constraints>
@@ -243,17 +254,6 @@
                     </buttonCell>
                     <connections>
                         <action selector="selectFolder:" target="-2" id="KtG-6k-cqT"/>
-                    </connections>
-                </button>
-                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yuc-Ex-4dq">
-                    <rect key="frame" x="315" y="200" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="hash-icon" imagePosition="only" alignment="center" enabled="NO" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="Qum-x4-3nY">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="calculateHash:" target="-2" id="jBI-Cd-tDN"/>
                     </connections>
                 </button>
             </subviews>
