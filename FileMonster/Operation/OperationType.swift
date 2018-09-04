@@ -7,12 +7,12 @@
 //
 
 enum OperationType {
-    case duplicates, sort
+    case duplicates, hash
     
     func name() -> String {
         switch self {
-        case .sort:
-            return "Filter by Name"
+        case .hash:
+            return "Calculating Hash"
         case .duplicates:
             return "Searching for duplicates"
         }
@@ -21,6 +21,6 @@ enum OperationType {
 
 extension OperationType {
     static var allValues: [OperationType] {
-        return [.duplicates, .sort]
+        return [.duplicates, .hash]
     }
 }
