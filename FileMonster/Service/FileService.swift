@@ -8,12 +8,10 @@
 
 import Foundation
 
-class FileManager {
+class FileService {
     func remove(at path: URL) {}
     func move(at path: URL) {}
     func get(at path: URL) {}
-
-    //open class var `default`: FileService { get }
 }
 //
 //
