@@ -87,7 +87,7 @@ class FileListController: NSViewController {
          Sorry 'bout that:]
          */
         if duplicationButton.isBordered {
-            let duplicationOperation = SearchingDuplicatesOperation(with: content)
+            let duplicationOperation = SearchDuplicatesOperation(with: content)
             duplicationButton.isEnabled = false
             duplicationOperation.completionBlock = { [unowned self] in
                 DispatchQueue.main.async {

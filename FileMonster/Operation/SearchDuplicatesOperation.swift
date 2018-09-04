@@ -1,5 +1,5 @@
 //
-//  SearchingDuplicatesOperation.swift
+//  SearchDuplicatesOperation.swift
 //  FileMonster
 //
 //  Created by Slava Plis on 8/30/18.
