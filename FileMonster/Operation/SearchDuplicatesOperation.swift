@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SearchingDuplicatesOperation: FileOperation {
+class SearchDuplicatesOperation: FileOperation {
     private var kvo: NSKeyValueObservation?
     private var manager = FileManager()
     private var progress: Progress
@@ -36,17 +36,16 @@ class SearchingDuplicatesOperation: FileOperation {
     }
 }
 
-extension SearchingDuplicatesOperation {
+extension SearchDuplicatesOperation {
     override func cancel() {
         progress.cancel()
         super.cancel()
     }
 }
 
-
 // MARK: -  KVO
 
-extension SearchingDuplicatesOperation {
+extension SearchDuplicatesOperation {
     private func setProgressObserving() {
         kvo = progress.observe(\.fractionCompleted) { [unowned self] (progress, change) in
             print(progress.fractionCompleted)
