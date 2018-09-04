@@ -33,7 +33,6 @@ struct File: Equatable {
     init(with path: URL) {
         self.name = path.lastPathComponent
         self.ext = path.pathExtension
-        self.type = .file
         self.path = path
         
         guard let props = fetchFileAttributes(path: path) else { return }
@@ -56,5 +55,14 @@ struct File: Equatable {
     
     static func ==(lhs: File, rhs: File) -> Bool {
         return lhs.name == rhs.name && lhs.ext == rhs.ext
+    }
+}
+
+extension File: Hashable {
+    var hashValue: Int {
+        guard let date = date?.hashValue, let size = size?.hashValue else {
+            return name.hashValue
+        }
+        return name.hashValue ^ date.hashValue ^ size.hashValue
     }
 }
