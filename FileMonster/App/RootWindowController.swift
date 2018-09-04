@@ -37,11 +37,10 @@ class RootWindowController: NSWindowController {
         /// - performs the oprations
         /// - displays the result of the performed opration
         
-        let fileBrowserViewController = ItemsController()
+        let fileBrowserViewController = FileListController()
         fileBrowserViewController.dataStore = store
         fileBrowserViewController.fileLoader = loader
         fileBrowserViewController.operationStack = stack
-
         spitController.addSplitViewItem(NSSplitViewItem(viewController: currentOperationsViewController))
         spitController.addSplitViewItem(NSSplitViewItem(viewController: fileBrowserViewController))
         
