@@ -45,14 +45,6 @@ class FileListController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let descriptorName = NSSortDescriptor(key: "name", ascending: true)
-//        let descriptorDate = NSSortDescriptor(key: Directory.FileOrder.Date.rawValue, ascending: true)
-//        let descriptorSize = NSSortDescriptor(key: Directory.FileOrder.Size.rawValue, ascending: true)
-        
-        tableView.tableColumns[0].sortDescriptorPrototype = descriptorName
-//        tableView.tableColumns[1].sortDescriptorPrototype = descriptorDate
-//        tableView.tableColumns[2].sortDescriptorPrototype = descriptorSize
     }
     
     /// Formaters
@@ -89,16 +81,23 @@ class FileListController: NSViewController {
         if duplicationButton.isBordered {
             let duplicationOperation = SearchDuplicatesOperation(with: content)
             duplicationButton.isEnabled = false
-            duplicationOperation.completionBlock = { [unowned self] in
+            duplicationOperation.completionBlock = { [weak self] in
                 DispatchQueue.main.async {
-                    self.duplicationButton.isEnabled = true
+                    self?.duplicationButton.isEnabled = true
                 }
             }
             operationStack?.add(operation: duplicationOperation)
         }
         
         if calculateHashButton.isBordered {
-            // DO SOMETHING
+            let calculateHashOperation = CalculateHashOperation(with: content)
+            calculateHashButton.isEnabled = false
+            calculateHashOperation.completionBlock = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.calculateHashButton.isEnabled = true
+                }
+            }
+            operationStack?.add(operation: calculateHashOperation)
         }
     }
     
