@@ -9,10 +9,10 @@
 import Foundation
 import Cocoa
 
-enum ManagableType {
-    case file
-    case dir
-}
+//enum ManagableType {
+//    case file
+//    case dir
+//}
 
 let attributes = [URLResourceKey.effectiveIconKey,
                   URLResourceKey.contentModificationDateKey,
@@ -20,7 +20,7 @@ let attributes = [URLResourceKey.effectiveIconKey,
                   URLResourceKey.isDirectoryKey]
 
 struct File: Equatable {
-    private var type: ManagableType
+//    private var type: ManagableType
     let path: URL
     let name: String
     let ext: String
