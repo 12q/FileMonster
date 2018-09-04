@@ -13,6 +13,7 @@
 		66AF844021383CAC00936CDB /* OperationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF843F21383CAC00936CDB /* OperationCellView.swift */; };
 		66AF8442213857D300936CDB /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF8441213857D300936CDB /* FileOperation.swift */; };
 		66AF84442138581000936CDB /* SearchingDuplicatesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF84432138581000936CDB /* SearchingDuplicatesOperation.swift */; };
+		66C35D07213F2FE400E52702 /* CalculateHashOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C35D06213F2FE400E52702 /* CalculateHashOperation.swift */; };
 		66D64A6A2125C15900C0EC60 /* RootWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64A682125C15900C0EC60 /* RootWindowController.swift */; };
 		66D64A6B2125C15900C0EC60 /* RootWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D64A692125C15900C0EC60 /* RootWindowController.xib */; };
 		66D64A6E2125C36900C0EC60 /* FileListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D64A6C2125C36900C0EC60 /* FileListController.swift */; };
@@ -54,6 +55,7 @@
 		66AF843F21383CAC00936CDB /* OperationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCellView.swift; sourceTree = "<group>"; };
 		66AF8441213857D300936CDB /* FileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOperation.swift; sourceTree = "<group>"; };
 		66AF84432138581000936CDB /* SearchingDuplicatesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingDuplicatesOperation.swift; sourceTree = "<group>"; };
+		66C35D06213F2FE400E52702 /* CalculateHashOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateHashOperation.swift; sourceTree = "<group>"; };
 		66D64A682125C15900C0EC60 /* RootWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootWindowController.swift; sourceTree = "<group>"; };
 		66D64A692125C15900C0EC60 /* RootWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootWindowController.xib; sourceTree = "<group>"; };
 		66D64A6C2125C36900C0EC60 /* FileListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				66AF8441213857D300936CDB /* FileOperation.swift */,
 				660C852C212C32F600256350 /* OperationProvider.swift */,
 				66AF84432138581000936CDB /* SearchingDuplicatesOperation.swift */,
+				66C35D06213F2FE400E52702 /* CalculateHashOperation.swift */,
 			);
 			path = Operation;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				66D64A6E2125C36900C0EC60 /* FileListController.swift in Sources */,
 				66E135182122F3120037F5C4 /* FileLoader.swift in Sources */,
 				66D64A6A2125C15900C0EC60 /* RootWindowController.swift in Sources */,
+				66C35D07213F2FE400E52702 /* CalculateHashOperation.swift in Sources */,
 				660C852F212C4E3D00256350 /* DataStore.swift in Sources */,
 				66AF844021383CAC00936CDB /* OperationCellView.swift in Sources */,
 				66D64A7D212B0AF800C0EC60 /* File.swift in Sources */,
