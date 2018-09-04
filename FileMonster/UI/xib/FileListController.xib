@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="ItemsController" customModule="FileMonster">
+        <customObject id="-2" userLabel="File's Owner" customClass="FileListController" customModule="FileMonster" customModuleProvider="target">
             <connections>
                 <outlet property="calculateHashButton" destination="Yuc-Ex-4dq" id="Bub-gB-Drl"/>
                 <outlet property="duplicationButton" destination="ojN-Qf-uMT" id="41w-IC-TYh"/>
@@ -174,7 +174,7 @@
                     </constraints>
                     <buttonCell key="cell" type="square" title="RUN" bezelStyle="shadowlessSquare" image="start-icon" imagePosition="right" alignment="center" imageScaling="proportionallyDown" inset="2" id="4Bd-l1-cVA">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="11"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="runSelectedOperations:" target="-2" id="w0u-qA-KAo"/>
@@ -188,7 +188,7 @@
                     </constraints>
                     <buttonCell key="cell" type="square" title="more" bezelStyle="shadowlessSquare" image="add-icon" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="PvL-lq-jAV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="11"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="addOneMorePath:" target="-2" id="G5U-GD-zxR"/>
@@ -250,7 +250,7 @@
                     </constraints>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="select-icon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="d9l-fa-fGD">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="11"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="selectFolder:" target="-2" id="KtG-6k-cqT"/>
@@ -288,7 +288,7 @@
             </constraints>
             <point key="canvasLocation" x="151.5" y="19"/>
         </customView>
-        <viewController id="NvJ-zS-q8K" customClass="ItemsController" customModule="FileMonster" customModuleProvider="target"/>
+        <viewController id="NvJ-zS-q8K" customClass="FileListController" customModule="FileMonster" customModuleProvider="target"/>
         <userDefaultsController representsSharedInstance="YES" id="hmd-8w-QYq"/>
     </objects>
     <resources>

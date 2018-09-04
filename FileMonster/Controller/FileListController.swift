@@ -1,5 +1,5 @@
 //
-//  ItemsController.swift
+//  FileListController.swift
 //  FileMonster
 //
 //  Created by Slava Plis on 8/16/18.
@@ -15,7 +15,7 @@ fileprivate enum Identifiers {
     static let SizeCell = "SizeCellIdentifier"
 }
 
-class ItemsController: NSViewController {
+class FileListController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var selectButton: NSButton!
     @IBOutlet weak var moarButton: NSButton!
@@ -112,7 +112,7 @@ enum SelectOption {
 
 // MARK: - File Open Panel
 
-extension ItemsController {
+extension FileListController {
     func showSelectFolderDialog(option: SelectOption) {
         let dialog = NSOpenPanel()
         dialog.message = "Please, select the Folder which shoud be processed by matched operations above."
@@ -130,7 +130,7 @@ extension ItemsController {
 
 // MARK: -  Data Store Delegate
 
-extension ItemsController: DataStoreDelegate {
+extension FileListController: DataStoreDelegate {
     func didUpdate(content: [File]) {
         self.content = content
         tableView.reloadData()
@@ -139,13 +139,13 @@ extension ItemsController: DataStoreDelegate {
 
 // MARK: -  Table View Delegate
 
-extension ItemsController: NSTableViewDataSource {
+extension FileListController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return content.count
     }
 }
 
-extension ItemsController: NSTableViewDelegate {
+extension FileListController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
